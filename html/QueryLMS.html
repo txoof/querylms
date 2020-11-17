@@ -1,0 +1,2450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>QueryLMS API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>QueryLMS</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python3
+# coding: utf-8
+
+
+
+
+
+
+import requests
+import socket
+import json
+
+try:
+    from . import const
+except ImportError as e:
+    import constants
+
+import logging
+
+
+
+
+
+
+# building documentation https://stackoverflow.com/questions/36237477/python-docstrings-to-github-readme-md
+
+
+
+
+
+
+logger = logging.getLogger(__name__)
+
+
+
+
+
+
+class QueryLMS():
+    &#39;&#39;&#39;Class to handle queries for a LMS player
+    
+    Each Query LMS object is associated with a single player
+    
+    If no host and port number are specified, the object will attempt to locate
+    an active LMS Server on the network. If a player_name is specified, the Query
+    object will attempt to find the player_id associated with that name.
+    
+    All queries are run against the server or a single server
+    
+    Attributes:
+        host(str): LMS Server hostname or ip address
+        port(int): LMS Server port number
+        player_name(str): Player name
+        player_id(str): unique player id in hex
+        scan_timeout(int): seconds to search local network for an LMS server
+        server_query_url(str): url to use when querying host status
+        server_base_url(str): base url of server: http://host:port/
+        
+    
+        &#39;&#39;&#39;
+    def __init__(self, host=None, port=None, player_name=None, player_id=None, scan_timeout=5):
+        &#39;&#39;&#39;inits QueryLMS Class with host, port, player_id, player_name and scan_timeout
+        
+        Attempts to set 
+        &#39;&#39;&#39;
+        self.host = host
+        self.port = port        
+        self.player_id = player_id
+        self.player_name = player_name
+        self.scan_timeout = scan_timeout
+        self.set_server()
+        
+    
+    @property
+    def host(self):
+        &#39;&#39;&#39;LMS ip address or hostname: (str)&#39;&#39;&#39;
+        return self._host
+    
+    @host.setter
+    def host(self, host):
+        self._host = host
+    
+    @property
+    def port(self):
+        &#39;&#39;&#39;LMS server port: (int)&#39;&#39;&#39;
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        self._port = port
+        
+    @property
+    def player_name(self):
+        &#39;&#39;&#39;human readable name of player: (str)&#39;&#39;&#39;
+        return self._player_name
+    
+    @player_name.setter
+    def player_name(self, player_name):
+        self._player_name = player_name
+#         if player_name and not self.player_id:
+#             player_id = None
+#             logging.info(f&#39;attempting to locate player_id for {player_name}&#39;)
+#             for p in self.get_players():
+#                 if &#39;name&#39; in p and &#39;playerid&#39; in p:
+#                     if p[&#39;name&#39;] == player_name:
+#                         player_id = p[&#39;playerid&#39;]
+            
+#             self.player_id = player_id
+                
+
+    @property
+    def player_id(self):
+        &#39;&#39;&#39;LMS player unique hexidecimal id (str)&#39;&#39;&#39;
+        return self._player_id
+    
+    @player_id.setter
+    def player_id(self, player_id):
+        self._player_id = player_id
+            
+
+    def set_server(self):
+        &#39;&#39;&#39;set the server details using &#34;host&#34; and &#34;port&#34;
+        if no host and port is specified, queryLMS will search for the first LMS server
+        on the local network segment
+        
+        Sets:
+            server_query_url
+            server_base_url
+            player_id (if not already set)&#39;&#39;&#39;
+        
+        base_url = None
+        query_url = None
+
+        
+        if self.host and self.port:
+            my_host = self.host
+            my_port = self.port
+        else:
+            my_host = None
+            my_port = None
+
+            server_list = self.scan_lms(self.scan_timeout)
+            if server_list:
+                try:
+                    my_host = server_list[0][&#39;host&#39;]
+                    my_port = server_list[0][&#39;port&#39;]
+                except (KeyError, IndexError) as e:
+                    logging.warning(f&#39;server search returned no valid data: {e}&#39;)
+
+            self.host = my_host
+            self.port = my_port
+
+        if my_host and my_port:
+            base_url = constants.LMS_QUERY_BASE_URL.format(self.host, self.port)
+            query_url = constants.LMS_QUERY_ENDPOINT.format(base_url)
+                    
+#         self.lms_server = {&#39;host&#39;: my_host, &#39;port&#39;: my_port}          
+        self.server_base_url = base_url
+        self.server_query_url = query_url
+        
+        if self.player_name and not self.player_id:
+            player_id = None
+#             logging.info(f&#39;attempting to locate player_id for {player_name}&#39;)
+            for p in self.get_players():
+                if &#39;name&#39; in p and &#39;playerid&#39; in p:
+                    if p[&#39;name&#39;] == self.player_name:
+                        player_id = p[&#39;playerid&#39;]
+                        break
+            
+            self.player_id = player_id
+        
+
+    
+    @staticmethod
+    def scan_lms(scan_timeout=None):
+        &#39;&#39;&#39;Search local network for Logitech Media Servers
+
+        Based on netdisco/lms.py by cxlwill - https://github.com/cxlwill
+
+        Args:
+          scan_timeout (int): timeout seconds
+
+        Returns:
+          list: Dictionary of LMS Server IP and listen ports
+
+        &#39;&#39;&#39;
+        lmsIP  = &#39;&lt;broadcast&gt;&#39;
+        lmsPort = constants.LMS_BRDCST_PORT
+        lmsMsg = constants.LMS_BRDCST_MSG
+        # search for servers unitl timeout expires
+        if scan_timeout:
+            lmsTimeout = scan_timeout
+        else:
+            lmsTimeout = constants.LMS_BRDCST_TIMEOUT
+
+        entries = []
+
+        mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        mySocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        mySocket.settimeout(lmsTimeout)
+        mySocket.bind((&#39;&#39;, 0))
+        logging.info(f&#39;searching for LMS servers for {lmsTimeout} seconds&#39;)
+        try:
+            mySocket.sendto(lmsMsg, (lmsIP, lmsPort))
+            while True: # loop until the timeout expires
+                try:
+                    data, address = mySocket.recvfrom(1024) # read 1024 bytes from the socket
+                    if data and address:
+                        port = None
+                        if data.startswith(b&#39;EJSON&#39;):
+                            position = data.find(b&#39;N&#39;)
+                            length = int(data[position+1:position+2].hex())
+                            port = int(data[position+2:position+2+length])
+                            entries.append({&#39;host&#39;: address[0], &#39;port&#39;: port})
+
+                except socket.timeout:
+                    if len(entries) &lt; 1:
+                        logging.warning(f&#39;server search timed out after {lmsTimeout} seconds with no results&#39;)
+                    break            
+                except OSError as e:
+                    logging.error(f&#39;error opening socket: {e}&#39;)
+        finally:
+            mySocket.close()
+        return entries   
+        
+
+    # Basic Query
+    #####################################
+    def query(self, player_id=&#34;&#34;, *args):
+        r = {}
+        params = json.dumps({&#39;id&#39;: 1, &#39;method&#39;: &#39;slim.request&#39;,
+                             &#39;params&#39;: [player_id, list(args)]})
+        try:
+            r = requests.post(self.server_query_url, params)
+        except requests.exceptions.RequestException as e:
+            logging.warning(f&#39;error making connection to server: {e}&#39;)
+        if r:
+            retval = json.loads(r.text)[&#39;result&#39;]
+        else:
+            retval = {}
+#         return json.loads(r.text)[&#39;result&#39;]
+        return retval
+
+    # Server commands
+    #####################################
+    def rescan(self):
+        &#39;&#39;&#39;rescan LMS library
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;rescan&#34;)
+    
+    def get_server_status(self):
+        &#39;&#39;&#39;query server status in JSON
+        
+        Returns:
+            (dict): JSON formatted server status&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;serverstatus&#34;, 0, 99)
+
+    def get_artists(self):
+        &#39;&#39;&#39;query server for internal artist id, names
+        Returns:
+            (dict): JSON formatted list of ids and artists&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;artists&#34;, 0, 9999)[&#39;artists_loop&#39;]
+
+    def get_artist_count(self):
+        &#39;&#39;&#39;query server for total number of artists
+        
+        Returns:
+            (int): count of unique artist ids&#39;&#39;&#39;
+        return len(self.get_artists())
+
+    def get_radios_count(self):
+        &#39;&#39;&#39;query server for total number of radios
+        
+        Returns:
+            (int): count of unique radios connected&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;favorites&#34;, &#34;items&#34;)[&#39;count&#39;]
+
+    def get_player_count(self):
+        &#39;&#39;&#39;query server for total number of connected players
+        
+        Returns:
+            (int): count of unique players connected&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;player&#34;, &#34;count&#34;, &#34;?&#34;)[&#39;_count&#39;]    
+    
+    def get_players(self):
+        &#39;&#39;&#39;query server for connected player information
+        
+        Returns:
+            (dict): JSON formatted list of player information&#39;&#39;&#39;
+        players = self.get_server_status()
+        if len(players):
+            players = players[&#39;players_loop&#39;]
+        return players
+    
+    def search(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring (ignoring case)
+        
+        Args:
+            searchstring(str): string to search for
+        
+        Returns:
+            (dict): JSON formatted list of all entities containing searchstring
+            &#39;&#39;&#39;
+        return self.query(&#39;&#39;, &#34;search&#34;, 0, count, &#34;term:&#34; + searchstring)
+
+    def search_tracks(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in track names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all track entities containing searchstring&#39;&#39;&#39;
+        result = self.search(searchstring, count)
+        if &#39;tracks_loop&#39; in result:
+            response = {&#34;tracks_count&#34;: result[&#39;tracks_count&#39;],
+                    &#34;tracks_loop&#34;: result[&#39;tracks_loop&#39;]}
+        else:
+            response = {&#34;tracks_count&#34;: 0}
+        return response
+
+    def search_albums(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in album names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all album entities containing searchstring&#39;&#39;&#39;        
+        result = self.search(searchstring, count)
+        if &#39;albums_loop&#39; in result:
+            response = {&#34;albums_count&#34;: result[&#39;albums_count&#39;],
+                    &#34;albums_loop&#34;: result[&#39;albums_loop&#39;]}
+        else:
+            response = {&#34;albums_count&#34;: 0}
+        return response
+
+    def search_contributors(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in contributors names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all contributors entities containing searchstring&#39;&#39;&#39;        
+        result = self.search(searchstring, count)
+        if &#39;contributors_loop&#39; in result:
+            response = {&#34;contributors_count&#34;: result[&#39;contributors_count&#39;],
+                    &#34;contributors_loop&#34;: result[&#39;contributors_loop&#39;]}
+        else:
+            response = {&#34;contributors_count&#34;: 0}
+        return response
+
+    def search_players(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in player names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all player entities containing searchstring&#39;&#39;&#39;        
+        players = self.get_players()
+        result = []
+        count = 0
+        for player in players:
+            for value in list(player.values()):
+                if(searchstring.lower() in str(value).lower()):
+                    result.append(player)
+                    count = count + 1
+        if count &gt; 0:
+            response = {&#34;players_count&#34;: count, &#34;players_loop&#34;: result}
+        else:
+            response = {&#34;players_count&#34;: count}
+        return response
+
+    def set_power(self, power=1):
+        &#39;&#39;&#39;send power command to connected player&#39;&#39;&#39;
+        self.query(self.player_id, &#34;power&#34;, power)
+
+    def set_power_all(self, power=1):
+        players = self.get_players()
+        for player in players:
+            self.set_power(player[&#39;playerid&#39;], power)
+
+    # Player Commands
+    #####################################    
+    def play_album(self, album_id):
+        &#39;&#39;&#39;play an album on associated player
+        
+        Args:
+            album_id(int): internal album id
+            
+        Returns:
+            (dict): {&#39;count&#39;: int} total tracks on album&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;playlistcontrol&#34;, &#34;cmd:load&#34;,
+                          &#34;album_id:&#34; + str(album_id))
+
+    def play_radio(self, radio):
+        &#39;&#39;&#39;play radio??? on associated player&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;favorites&#34;, &#34;playlist&#34;, &#34;play&#34;,
+                          &#34;item_id:&#34; + str(radio))
+
+    def pause(self):
+        &#39;&#39;&#39;pause associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;pause&#34;)
+
+    def skip_songs(self, amount=1):
+        &#39;&#39;&#39;skip n tracks on associated player
+        
+        Args:
+            amount(int): number of tracks to skip
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        if amount &gt; 0:
+            amount = &#34;+&#34; + str(amount)
+        else:
+            amount = str(amount)
+        return self.query(self.player_id, &#34;playlist&#34;, &#34;index&#34;, amount)
+
+    def previous_song(self):
+        &#39;&#39;&#39;rewind one track on associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.skip_songs(-1)
+
+    def next_song(self):
+        &#39;&#39;&#39;fast forward one track on associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.skip_songs()
+    
+    def get_volume(self):
+        &#39;&#39;&#39;query associated player for volume
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        volume = self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, &#34;?&#34;)
+        if len(volume):
+            volume = volume[&#39;_volume&#39;]
+        else:
+            volume = 0
+        return volume
+
+    def set_volume(self, volume):
+        &#39;&#39;&#39;set volume on associated player
+        
+        Args:
+            volume(int): 0-100
+            
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, volume)
+
+    def get_current_song_title(self):
+        &#39;&#39;&#39;query associated player for currently playing track title
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        title = self.query(self.player_id, &#34;current_title&#34;, &#34;?&#34;)
+        if len(title):
+            title = title[&#39;_current_title&#39;]
+        else:
+            title = &#34;&#34;
+        return title
+
+    def get_current_artist(self):
+        &#39;&#39;&#39;query associated player for currently playing artist
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+
+        artist = self.query(self.player_id, &#34;artist&#34;, &#34;?&#34;)
+        if len(artist):
+            artist = artist[&#39;_artist&#39;]
+        else:
+            artist = &#34;&#34;
+        return artist
+
+    def get_current_album(self):
+        &#39;&#39;&#39;query associated player for currently playing track album
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        album = self.query(self.player_id, &#34;album&#34;, &#34;?&#34;)
+        if len(album):
+            album = album[&#39;_album&#39;]
+        else:
+            album = &#34;&#34;
+        return album
+
+    def get_current_title(self):
+        &#39;&#39;&#39;query associated player for currently playing track title
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        title = self.query(self.player_id, &#34;title&#34;, &#34;?&#34;)
+        if len(title):
+            title = title[&#39;_title&#39;]
+        else:
+            title = &#34;&#34;
+        return title
+
+    def get_current_radio_title(self, radio):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;favorites&#34;,
+                          &#34;items&#34;, 0, 99)[&#39;loop_loop&#39;][radio][&#39;name&#39;]
+
+    def is_playing_remote_stream(self):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;remote&#34;, &#34;?&#34;)[&#39;_remote&#39;] == 1
+
+    def get_artist_album(self, artist_id):
+        &#39;&#39;&#39;query associated player for currently playing album artist
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        return self.query(self.player_id, &#34;albums&#34;, 0, 99, &#34;tags:al&#34;,
+                          &#34;artist_id:&#34; + str(artist_id))[&#39;albums_loop&#39;]
+
+    def get_alarms(self, enabled=True):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        if enabled:
+            alarmsEnabled = self.get_player_pref(self.player_id, &#34;alarmsEnabled&#34;)
+            if alarmsEnabled == &#34;0&#34;:
+                return {}
+            alarm_filter = &#34;enabled&#34;
+        else:
+            alarm_filter = &#34;all&#34;
+        return self.query(self.player_id, &#34;alarms&#34;, 0, 99,
+            &#34;filter:%s&#34; % alarm_filter)
+
+    def get_next_alarm(self):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        alarms = self.get_alarms(self.player_id)
+        alarmtime = 0
+        delta = 0
+        if alarms == {} or alarms[&#39;count&#39;] == 0:
+            return {}
+        for alarmitem in alarms[&#39;alarms_loop&#39;]:
+            if(str((datetime.datetime.today().weekday() + 1) % 7)
+               not in alarmitem[&#39;dow&#39;]):
+                continue
+            alarmtime_new = datetime.timedelta(seconds=int(alarmitem[&#39;time&#39;]))
+            now = datetime.datetime.now()
+            currenttime = datetime.timedelta(hours=now.hour,
+                                             minutes=now.minute,
+                                             seconds=now.second)
+            delta_new = alarmtime_new - currenttime
+            if delta == 0:
+                delta = delta_new
+                alarmtime = alarmtime_new
+            elif delta_new &lt; delta:
+                delta = delta_new
+                alarmtime = alarmtime_new
+        if alarmtime == 0:
+            return {}
+        else:
+            return {&#34;alarmtime&#34;: alarmtime.seconds, &#34;delta&#34;: delta.seconds}
+
+    def get_now_playing(self):
+        &#39;&#39;&#39;query associated player for now playing information including:
+        * album
+        * artist
+        * artwork_url
+        * duration
+        * genre
+        * coverid
+        * id
+        * title&#39;&#39;&#39;        
+        status_keys = [&#39;time&#39;, &#39;mode&#39;]
+        
+        status = self.query(self.player_id, &#39;status&#39;)
+        track_id = None
+        song_info = None
+        now_playing_info = {}
+        
+        if status:
+            try:
+                playing_track = self.query(self.player_id, &#39;status&#39;, 
+                                           int(status[&#39;playlist_cur_index&#39;]), 1, &#39;-&#39;)[&#39;playlist_loop&#39;][0]
+                track_id = playing_track[&#39;id&#39;]
+                song_info = self.query(&#39;&#39;, &#39;songinfo&#39;, 0, 100, &#39;track_id:&#39;+str(track_id), &#39;tags:a,c,d,e,g,l&#39;)[&#39;songinfo_loop&#39;]
+                for key in status_keys:
+                    if key in status:
+                        now_playing_info[key] = status[key]
+                    else:
+                        now_playing_info[key] = None
+            except (KeyError, IndexError):
+                pass
+       
+        if song_info:
+            try:
+                for each in song_info:
+                    for key in each:
+                        now_playing_info[key] = each[key]
+                coverid = 0
+                if &#39;coverid&#39; in now_playing_info:
+                    if now_playing_info[&#39;coverid&#39;].startswith(&#39;-&#39;):
+                        pass
+                    else:
+                        coverid = now_playing_info[&#39;coverid&#39;]
+                now_playing_info[&#39;artwork_url&#39;] = f&#39;{self.server_base_url}music/{coverid}/cover.jpg&#39;
+            except (KeyError, IndexError):
+                pass
+            
+
+        return now_playing_info
+    
+    def get_player_pref(self, pref):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;playerpref&#34;, pref, &#34;?&#34;)[&#39;_p2&#39;]
+
+    def set_player_pref(self, pref, value):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        self.query(self.player_id, &#34;playerpref&#34;, pref, value)
+
+    def display(self, line1, line2, duration=5):
+        &#39;&#39;&#39;display line1 and line2 on associated player
+        
+        Args:
+            line1(str)
+            line1(str)&#39;&#39;&#39;
+        self.query(self.player_id, &#34;display&#34;, line1, line2, duration)
+
+    def display_all(self, line1, line2, duration=5):
+        &#39;&#39;&#39;display line1 and line2 on all connected players
+        
+        Args:
+            line1(str)
+            line1(str)&#39;&#39;&#39;
+
+        players = self.get_players()
+        for player in players:
+            self.display(player[&#39;playerid&#39;], line1, line2, duration)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="QueryLMS.QueryLMS"><code class="flex name class">
+<span>class <span class="ident">QueryLMS</span></span>
+<span>(</span><span>host=None, port=None, player_name=None, player_id=None, scan_timeout=5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class to handle queries for a LMS player</p>
+<p>Each Query LMS object is associated with a single player</p>
+<p>If no host and port number are specified, the object will attempt to locate
+an active LMS Server on the network. If a player_name is specified, the Query
+object will attempt to find the player_id associated with that name.</p>
+<p>All queries are run against the server or a single server</p>
+<h2 id="attributes">Attributes</h2>
+<p>host(str): LMS Server hostname or ip address
+port(int): LMS Server port number
+player_name(str): Player name
+player_id(str): unique player id in hex
+scan_timeout(int): seconds to search local network for an LMS server
+server_query_url(str): url to use when querying host status
+server_base_url(str): base url of server: <a href="http://host:port/">http://host:port/</a>
+inits QueryLMS Class with host, port, player_id, player_name and scan_timeout</p>
+<p>Attempts to set</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QueryLMS():
+    &#39;&#39;&#39;Class to handle queries for a LMS player
+    
+    Each Query LMS object is associated with a single player
+    
+    If no host and port number are specified, the object will attempt to locate
+    an active LMS Server on the network. If a player_name is specified, the Query
+    object will attempt to find the player_id associated with that name.
+    
+    All queries are run against the server or a single server
+    
+    Attributes:
+        host(str): LMS Server hostname or ip address
+        port(int): LMS Server port number
+        player_name(str): Player name
+        player_id(str): unique player id in hex
+        scan_timeout(int): seconds to search local network for an LMS server
+        server_query_url(str): url to use when querying host status
+        server_base_url(str): base url of server: http://host:port/
+        
+    
+        &#39;&#39;&#39;
+    def __init__(self, host=None, port=None, player_name=None, player_id=None, scan_timeout=5):
+        &#39;&#39;&#39;inits QueryLMS Class with host, port, player_id, player_name and scan_timeout
+        
+        Attempts to set 
+        &#39;&#39;&#39;
+        self.host = host
+        self.port = port        
+        self.player_id = player_id
+        self.player_name = player_name
+        self.scan_timeout = scan_timeout
+        self.set_server()
+        
+    
+    @property
+    def host(self):
+        &#39;&#39;&#39;LMS ip address or hostname: (str)&#39;&#39;&#39;
+        return self._host
+    
+    @host.setter
+    def host(self, host):
+        self._host = host
+    
+    @property
+    def port(self):
+        &#39;&#39;&#39;LMS server port: (int)&#39;&#39;&#39;
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        self._port = port
+        
+    @property
+    def player_name(self):
+        &#39;&#39;&#39;human readable name of player: (str)&#39;&#39;&#39;
+        return self._player_name
+    
+    @player_name.setter
+    def player_name(self, player_name):
+        self._player_name = player_name
+#         if player_name and not self.player_id:
+#             player_id = None
+#             logging.info(f&#39;attempting to locate player_id for {player_name}&#39;)
+#             for p in self.get_players():
+#                 if &#39;name&#39; in p and &#39;playerid&#39; in p:
+#                     if p[&#39;name&#39;] == player_name:
+#                         player_id = p[&#39;playerid&#39;]
+            
+#             self.player_id = player_id
+                
+
+    @property
+    def player_id(self):
+        &#39;&#39;&#39;LMS player unique hexidecimal id (str)&#39;&#39;&#39;
+        return self._player_id
+    
+    @player_id.setter
+    def player_id(self, player_id):
+        self._player_id = player_id
+            
+
+    def set_server(self):
+        &#39;&#39;&#39;set the server details using &#34;host&#34; and &#34;port&#34;
+        if no host and port is specified, queryLMS will search for the first LMS server
+        on the local network segment
+        
+        Sets:
+            server_query_url
+            server_base_url
+            player_id (if not already set)&#39;&#39;&#39;
+        
+        base_url = None
+        query_url = None
+
+        
+        if self.host and self.port:
+            my_host = self.host
+            my_port = self.port
+        else:
+            my_host = None
+            my_port = None
+
+            server_list = self.scan_lms(self.scan_timeout)
+            if server_list:
+                try:
+                    my_host = server_list[0][&#39;host&#39;]
+                    my_port = server_list[0][&#39;port&#39;]
+                except (KeyError, IndexError) as e:
+                    logging.warning(f&#39;server search returned no valid data: {e}&#39;)
+
+            self.host = my_host
+            self.port = my_port
+
+        if my_host and my_port:
+            base_url = constants.LMS_QUERY_BASE_URL.format(self.host, self.port)
+            query_url = constants.LMS_QUERY_ENDPOINT.format(base_url)
+                    
+#         self.lms_server = {&#39;host&#39;: my_host, &#39;port&#39;: my_port}          
+        self.server_base_url = base_url
+        self.server_query_url = query_url
+        
+        if self.player_name and not self.player_id:
+            player_id = None
+#             logging.info(f&#39;attempting to locate player_id for {player_name}&#39;)
+            for p in self.get_players():
+                if &#39;name&#39; in p and &#39;playerid&#39; in p:
+                    if p[&#39;name&#39;] == self.player_name:
+                        player_id = p[&#39;playerid&#39;]
+                        break
+            
+            self.player_id = player_id
+        
+
+    
+    @staticmethod
+    def scan_lms(scan_timeout=None):
+        &#39;&#39;&#39;Search local network for Logitech Media Servers
+
+        Based on netdisco/lms.py by cxlwill - https://github.com/cxlwill
+
+        Args:
+          scan_timeout (int): timeout seconds
+
+        Returns:
+          list: Dictionary of LMS Server IP and listen ports
+
+        &#39;&#39;&#39;
+        lmsIP  = &#39;&lt;broadcast&gt;&#39;
+        lmsPort = constants.LMS_BRDCST_PORT
+        lmsMsg = constants.LMS_BRDCST_MSG
+        # search for servers unitl timeout expires
+        if scan_timeout:
+            lmsTimeout = scan_timeout
+        else:
+            lmsTimeout = constants.LMS_BRDCST_TIMEOUT
+
+        entries = []
+
+        mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        mySocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        mySocket.settimeout(lmsTimeout)
+        mySocket.bind((&#39;&#39;, 0))
+        logging.info(f&#39;searching for LMS servers for {lmsTimeout} seconds&#39;)
+        try:
+            mySocket.sendto(lmsMsg, (lmsIP, lmsPort))
+            while True: # loop until the timeout expires
+                try:
+                    data, address = mySocket.recvfrom(1024) # read 1024 bytes from the socket
+                    if data and address:
+                        port = None
+                        if data.startswith(b&#39;EJSON&#39;):
+                            position = data.find(b&#39;N&#39;)
+                            length = int(data[position+1:position+2].hex())
+                            port = int(data[position+2:position+2+length])
+                            entries.append({&#39;host&#39;: address[0], &#39;port&#39;: port})
+
+                except socket.timeout:
+                    if len(entries) &lt; 1:
+                        logging.warning(f&#39;server search timed out after {lmsTimeout} seconds with no results&#39;)
+                    break            
+                except OSError as e:
+                    logging.error(f&#39;error opening socket: {e}&#39;)
+        finally:
+            mySocket.close()
+        return entries   
+        
+
+    # Basic Query
+    #####################################
+    def query(self, player_id=&#34;&#34;, *args):
+        r = {}
+        params = json.dumps({&#39;id&#39;: 1, &#39;method&#39;: &#39;slim.request&#39;,
+                             &#39;params&#39;: [player_id, list(args)]})
+        try:
+            r = requests.post(self.server_query_url, params)
+        except requests.exceptions.RequestException as e:
+            logging.warning(f&#39;error making connection to server: {e}&#39;)
+        if r:
+            retval = json.loads(r.text)[&#39;result&#39;]
+        else:
+            retval = {}
+#         return json.loads(r.text)[&#39;result&#39;]
+        return retval
+
+    # Server commands
+    #####################################
+    def rescan(self):
+        &#39;&#39;&#39;rescan LMS library
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;rescan&#34;)
+    
+    def get_server_status(self):
+        &#39;&#39;&#39;query server status in JSON
+        
+        Returns:
+            (dict): JSON formatted server status&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;serverstatus&#34;, 0, 99)
+
+    def get_artists(self):
+        &#39;&#39;&#39;query server for internal artist id, names
+        Returns:
+            (dict): JSON formatted list of ids and artists&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;artists&#34;, 0, 9999)[&#39;artists_loop&#39;]
+
+    def get_artist_count(self):
+        &#39;&#39;&#39;query server for total number of artists
+        
+        Returns:
+            (int): count of unique artist ids&#39;&#39;&#39;
+        return len(self.get_artists())
+
+    def get_radios_count(self):
+        &#39;&#39;&#39;query server for total number of radios
+        
+        Returns:
+            (int): count of unique radios connected&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;favorites&#34;, &#34;items&#34;)[&#39;count&#39;]
+
+    def get_player_count(self):
+        &#39;&#39;&#39;query server for total number of connected players
+        
+        Returns:
+            (int): count of unique players connected&#39;&#39;&#39;
+        return self.query(&#34;&#34;, &#34;player&#34;, &#34;count&#34;, &#34;?&#34;)[&#39;_count&#39;]    
+    
+    def get_players(self):
+        &#39;&#39;&#39;query server for connected player information
+        
+        Returns:
+            (dict): JSON formatted list of player information&#39;&#39;&#39;
+        players = self.get_server_status()
+        if len(players):
+            players = players[&#39;players_loop&#39;]
+        return players
+    
+    def search(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring (ignoring case)
+        
+        Args:
+            searchstring(str): string to search for
+        
+        Returns:
+            (dict): JSON formatted list of all entities containing searchstring
+            &#39;&#39;&#39;
+        return self.query(&#39;&#39;, &#34;search&#34;, 0, count, &#34;term:&#34; + searchstring)
+
+    def search_tracks(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in track names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all track entities containing searchstring&#39;&#39;&#39;
+        result = self.search(searchstring, count)
+        if &#39;tracks_loop&#39; in result:
+            response = {&#34;tracks_count&#34;: result[&#39;tracks_count&#39;],
+                    &#34;tracks_loop&#34;: result[&#39;tracks_loop&#39;]}
+        else:
+            response = {&#34;tracks_count&#34;: 0}
+        return response
+
+    def search_albums(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in album names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all album entities containing searchstring&#39;&#39;&#39;        
+        result = self.search(searchstring, count)
+        if &#39;albums_loop&#39; in result:
+            response = {&#34;albums_count&#34;: result[&#39;albums_count&#39;],
+                    &#34;albums_loop&#34;: result[&#39;albums_loop&#39;]}
+        else:
+            response = {&#34;albums_count&#34;: 0}
+        return response
+
+    def search_contributors(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in contributors names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all contributors entities containing searchstring&#39;&#39;&#39;        
+        result = self.search(searchstring, count)
+        if &#39;contributors_loop&#39; in result:
+            response = {&#34;contributors_count&#34;: result[&#39;contributors_count&#39;],
+                    &#34;contributors_loop&#34;: result[&#39;contributors_loop&#39;]}
+        else:
+            response = {&#34;contributors_count&#34;: 0}
+        return response
+
+    def search_players(self, searchstring, count=9999):
+        &#39;&#39;&#39;query server for searchstring in player names (ignoring case)
+        
+        Args:
+            searchstring(str): string to search tracks for
+            
+        Returns:
+            (dict): JSON formatted list of all player entities containing searchstring&#39;&#39;&#39;        
+        players = self.get_players()
+        result = []
+        count = 0
+        for player in players:
+            for value in list(player.values()):
+                if(searchstring.lower() in str(value).lower()):
+                    result.append(player)
+                    count = count + 1
+        if count &gt; 0:
+            response = {&#34;players_count&#34;: count, &#34;players_loop&#34;: result}
+        else:
+            response = {&#34;players_count&#34;: count}
+        return response
+
+    def set_power(self, power=1):
+        &#39;&#39;&#39;send power command to connected player&#39;&#39;&#39;
+        self.query(self.player_id, &#34;power&#34;, power)
+
+    def set_power_all(self, power=1):
+        players = self.get_players()
+        for player in players:
+            self.set_power(player[&#39;playerid&#39;], power)
+
+    # Player Commands
+    #####################################    
+    def play_album(self, album_id):
+        &#39;&#39;&#39;play an album on associated player
+        
+        Args:
+            album_id(int): internal album id
+            
+        Returns:
+            (dict): {&#39;count&#39;: int} total tracks on album&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;playlistcontrol&#34;, &#34;cmd:load&#34;,
+                          &#34;album_id:&#34; + str(album_id))
+
+    def play_radio(self, radio):
+        &#39;&#39;&#39;play radio??? on associated player&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;favorites&#34;, &#34;playlist&#34;, &#34;play&#34;,
+                          &#34;item_id:&#34; + str(radio))
+
+    def pause(self):
+        &#39;&#39;&#39;pause associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;pause&#34;)
+
+    def skip_songs(self, amount=1):
+        &#39;&#39;&#39;skip n tracks on associated player
+        
+        Args:
+            amount(int): number of tracks to skip
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        if amount &gt; 0:
+            amount = &#34;+&#34; + str(amount)
+        else:
+            amount = str(amount)
+        return self.query(self.player_id, &#34;playlist&#34;, &#34;index&#34;, amount)
+
+    def previous_song(self):
+        &#39;&#39;&#39;rewind one track on associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.skip_songs(-1)
+
+    def next_song(self):
+        &#39;&#39;&#39;fast forward one track on associated player
+        
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        return self.skip_songs()
+    
+    def get_volume(self):
+        &#39;&#39;&#39;query associated player for volume
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        volume = self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, &#34;?&#34;)
+        if len(volume):
+            volume = volume[&#39;_volume&#39;]
+        else:
+            volume = 0
+        return volume
+
+    def set_volume(self, volume):
+        &#39;&#39;&#39;set volume on associated player
+        
+        Args:
+            volume(int): 0-100
+            
+        Returns:
+            (dict): {}&#39;&#39;&#39;
+        self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, volume)
+
+    def get_current_song_title(self):
+        &#39;&#39;&#39;query associated player for currently playing track title
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        title = self.query(self.player_id, &#34;current_title&#34;, &#34;?&#34;)
+        if len(title):
+            title = title[&#39;_current_title&#39;]
+        else:
+            title = &#34;&#34;
+        return title
+
+    def get_current_artist(self):
+        &#39;&#39;&#39;query associated player for currently playing artist
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+
+        artist = self.query(self.player_id, &#34;artist&#34;, &#34;?&#34;)
+        if len(artist):
+            artist = artist[&#39;_artist&#39;]
+        else:
+            artist = &#34;&#34;
+        return artist
+
+    def get_current_album(self):
+        &#39;&#39;&#39;query associated player for currently playing track album
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        album = self.query(self.player_id, &#34;album&#34;, &#34;?&#34;)
+        if len(album):
+            album = album[&#39;_album&#39;]
+        else:
+            album = &#34;&#34;
+        return album
+
+    def get_current_title(self):
+        &#39;&#39;&#39;query associated player for currently playing track title
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        title = self.query(self.player_id, &#34;title&#34;, &#34;?&#34;)
+        if len(title):
+            title = title[&#39;_title&#39;]
+        else:
+            title = &#34;&#34;
+        return title
+
+    def get_current_radio_title(self, radio):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;favorites&#34;,
+                          &#34;items&#34;, 0, 99)[&#39;loop_loop&#39;][radio][&#39;name&#39;]
+
+    def is_playing_remote_stream(self):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;remote&#34;, &#34;?&#34;)[&#39;_remote&#39;] == 1
+
+    def get_artist_album(self, artist_id):
+        &#39;&#39;&#39;query associated player for currently playing album artist
+        
+        Returns:
+            (str)&#39;&#39;&#39;
+        
+        return self.query(self.player_id, &#34;albums&#34;, 0, 99, &#34;tags:al&#34;,
+                          &#34;artist_id:&#34; + str(artist_id))[&#39;albums_loop&#39;]
+
+    def get_alarms(self, enabled=True):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        if enabled:
+            alarmsEnabled = self.get_player_pref(self.player_id, &#34;alarmsEnabled&#34;)
+            if alarmsEnabled == &#34;0&#34;:
+                return {}
+            alarm_filter = &#34;enabled&#34;
+        else:
+            alarm_filter = &#34;all&#34;
+        return self.query(self.player_id, &#34;alarms&#34;, 0, 99,
+            &#34;filter:%s&#34; % alarm_filter)
+
+    def get_next_alarm(self):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        alarms = self.get_alarms(self.player_id)
+        alarmtime = 0
+        delta = 0
+        if alarms == {} or alarms[&#39;count&#39;] == 0:
+            return {}
+        for alarmitem in alarms[&#39;alarms_loop&#39;]:
+            if(str((datetime.datetime.today().weekday() + 1) % 7)
+               not in alarmitem[&#39;dow&#39;]):
+                continue
+            alarmtime_new = datetime.timedelta(seconds=int(alarmitem[&#39;time&#39;]))
+            now = datetime.datetime.now()
+            currenttime = datetime.timedelta(hours=now.hour,
+                                             minutes=now.minute,
+                                             seconds=now.second)
+            delta_new = alarmtime_new - currenttime
+            if delta == 0:
+                delta = delta_new
+                alarmtime = alarmtime_new
+            elif delta_new &lt; delta:
+                delta = delta_new
+                alarmtime = alarmtime_new
+        if alarmtime == 0:
+            return {}
+        else:
+            return {&#34;alarmtime&#34;: alarmtime.seconds, &#34;delta&#34;: delta.seconds}
+
+    def get_now_playing(self):
+        &#39;&#39;&#39;query associated player for now playing information including:
+        * album
+        * artist
+        * artwork_url
+        * duration
+        * genre
+        * coverid
+        * id
+        * title&#39;&#39;&#39;        
+        status_keys = [&#39;time&#39;, &#39;mode&#39;]
+        
+        status = self.query(self.player_id, &#39;status&#39;)
+        track_id = None
+        song_info = None
+        now_playing_info = {}
+        
+        if status:
+            try:
+                playing_track = self.query(self.player_id, &#39;status&#39;, 
+                                           int(status[&#39;playlist_cur_index&#39;]), 1, &#39;-&#39;)[&#39;playlist_loop&#39;][0]
+                track_id = playing_track[&#39;id&#39;]
+                song_info = self.query(&#39;&#39;, &#39;songinfo&#39;, 0, 100, &#39;track_id:&#39;+str(track_id), &#39;tags:a,c,d,e,g,l&#39;)[&#39;songinfo_loop&#39;]
+                for key in status_keys:
+                    if key in status:
+                        now_playing_info[key] = status[key]
+                    else:
+                        now_playing_info[key] = None
+            except (KeyError, IndexError):
+                pass
+       
+        if song_info:
+            try:
+                for each in song_info:
+                    for key in each:
+                        now_playing_info[key] = each[key]
+                coverid = 0
+                if &#39;coverid&#39; in now_playing_info:
+                    if now_playing_info[&#39;coverid&#39;].startswith(&#39;-&#39;):
+                        pass
+                    else:
+                        coverid = now_playing_info[&#39;coverid&#39;]
+                now_playing_info[&#39;artwork_url&#39;] = f&#39;{self.server_base_url}music/{coverid}/cover.jpg&#39;
+            except (KeyError, IndexError):
+                pass
+            
+
+        return now_playing_info
+    
+    def get_player_pref(self, pref):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        return self.query(self.player_id, &#34;playerpref&#34;, pref, &#34;?&#34;)[&#39;_p2&#39;]
+
+    def set_player_pref(self, pref, value):
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        self.query(self.player_id, &#34;playerpref&#34;, pref, value)
+
+    def display(self, line1, line2, duration=5):
+        &#39;&#39;&#39;display line1 and line2 on associated player
+        
+        Args:
+            line1(str)
+            line1(str)&#39;&#39;&#39;
+        self.query(self.player_id, &#34;display&#34;, line1, line2, duration)
+
+    def display_all(self, line1, line2, duration=5):
+        &#39;&#39;&#39;display line1 and line2 on all connected players
+        
+        Args:
+            line1(str)
+            line1(str)&#39;&#39;&#39;
+
+        players = self.get_players()
+        for player in players:
+            self.display(player[&#39;playerid&#39;], line1, line2, duration)</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="QueryLMS.QueryLMS.scan_lms"><code class="name flex">
+<span>def <span class="ident">scan_lms</span></span>(<span>scan_timeout=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Search local network for Logitech Media Servers</p>
+<p>Based on netdisco/lms.py by cxlwill - <a href="https://github.com/cxlwill">https://github.com/cxlwill</a></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scan_timeout</code></strong> :&ensp;<code>int</code></dt>
+<dd>timeout seconds</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>Dictionary of LMS Server IP and listen ports</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def scan_lms(scan_timeout=None):
+    &#39;&#39;&#39;Search local network for Logitech Media Servers
+
+    Based on netdisco/lms.py by cxlwill - https://github.com/cxlwill
+
+    Args:
+      scan_timeout (int): timeout seconds
+
+    Returns:
+      list: Dictionary of LMS Server IP and listen ports
+
+    &#39;&#39;&#39;
+    lmsIP  = &#39;&lt;broadcast&gt;&#39;
+    lmsPort = constants.LMS_BRDCST_PORT
+    lmsMsg = constants.LMS_BRDCST_MSG
+    # search for servers unitl timeout expires
+    if scan_timeout:
+        lmsTimeout = scan_timeout
+    else:
+        lmsTimeout = constants.LMS_BRDCST_TIMEOUT
+
+    entries = []
+
+    mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    mySocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    mySocket.settimeout(lmsTimeout)
+    mySocket.bind((&#39;&#39;, 0))
+    logging.info(f&#39;searching for LMS servers for {lmsTimeout} seconds&#39;)
+    try:
+        mySocket.sendto(lmsMsg, (lmsIP, lmsPort))
+        while True: # loop until the timeout expires
+            try:
+                data, address = mySocket.recvfrom(1024) # read 1024 bytes from the socket
+                if data and address:
+                    port = None
+                    if data.startswith(b&#39;EJSON&#39;):
+                        position = data.find(b&#39;N&#39;)
+                        length = int(data[position+1:position+2].hex())
+                        port = int(data[position+2:position+2+length])
+                        entries.append({&#39;host&#39;: address[0], &#39;port&#39;: port})
+
+            except socket.timeout:
+                if len(entries) &lt; 1:
+                    logging.warning(f&#39;server search timed out after {lmsTimeout} seconds with no results&#39;)
+                break            
+            except OSError as e:
+                logging.error(f&#39;error opening socket: {e}&#39;)
+    finally:
+        mySocket.close()
+    return entries   </code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="QueryLMS.QueryLMS.host"><code class="name">var <span class="ident">host</span></code></dt>
+<dd>
+<div class="desc"><p>LMS ip address or hostname: (str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def host(self):
+    &#39;&#39;&#39;LMS ip address or hostname: (str)&#39;&#39;&#39;
+    return self._host</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.player_id"><code class="name">var <span class="ident">player_id</span></code></dt>
+<dd>
+<div class="desc"><p>LMS player unique hexidecimal id (str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def player_id(self):
+    &#39;&#39;&#39;LMS player unique hexidecimal id (str)&#39;&#39;&#39;
+    return self._player_id</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.player_name"><code class="name">var <span class="ident">player_name</span></code></dt>
+<dd>
+<div class="desc"><p>human readable name of player: (str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def player_name(self):
+    &#39;&#39;&#39;human readable name of player: (str)&#39;&#39;&#39;
+    return self._player_name</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.port"><code class="name">var <span class="ident">port</span></code></dt>
+<dd>
+<div class="desc"><p>LMS server port: (int)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def port(self):
+    &#39;&#39;&#39;LMS server port: (int)&#39;&#39;&#39;
+    return self._port</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="QueryLMS.QueryLMS.display"><code class="name flex">
+<span>def <span class="ident">display</span></span>(<span>self, line1, line2, duration=5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>display line1 and line2 on associated player</p>
+<h2 id="args">Args</h2>
+<p>line1(str)
+line1(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display(self, line1, line2, duration=5):
+    &#39;&#39;&#39;display line1 and line2 on associated player
+    
+    Args:
+        line1(str)
+        line1(str)&#39;&#39;&#39;
+    self.query(self.player_id, &#34;display&#34;, line1, line2, duration)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.display_all"><code class="name flex">
+<span>def <span class="ident">display_all</span></span>(<span>self, line1, line2, duration=5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>display line1 and line2 on all connected players</p>
+<h2 id="args">Args</h2>
+<p>line1(str)
+line1(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_all(self, line1, line2, duration=5):
+    &#39;&#39;&#39;display line1 and line2 on all connected players
+    
+    Args:
+        line1(str)
+        line1(str)&#39;&#39;&#39;
+
+    players = self.get_players()
+    for player in players:
+        self.display(player[&#39;playerid&#39;], line1, line2, duration)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_alarms"><code class="name flex">
+<span>def <span class="ident">get_alarms</span></span>(<span>self, enabled=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_alarms(self, enabled=True):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    if enabled:
+        alarmsEnabled = self.get_player_pref(self.player_id, &#34;alarmsEnabled&#34;)
+        if alarmsEnabled == &#34;0&#34;:
+            return {}
+        alarm_filter = &#34;enabled&#34;
+    else:
+        alarm_filter = &#34;all&#34;
+    return self.query(self.player_id, &#34;alarms&#34;, 0, 99,
+        &#34;filter:%s&#34; % alarm_filter)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_artist_album"><code class="name flex">
+<span>def <span class="ident">get_artist_album</span></span>(<span>self, artist_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for currently playing album artist</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_artist_album(self, artist_id):
+    &#39;&#39;&#39;query associated player for currently playing album artist
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+    
+    return self.query(self.player_id, &#34;albums&#34;, 0, 99, &#34;tags:al&#34;,
+                      &#34;artist_id:&#34; + str(artist_id))[&#39;albums_loop&#39;]</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_artist_count"><code class="name flex">
+<span>def <span class="ident">get_artist_count</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for total number of artists</p>
+<h2 id="returns">Returns</h2>
+<p>(int): count of unique artist ids</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_artist_count(self):
+    &#39;&#39;&#39;query server for total number of artists
+    
+    Returns:
+        (int): count of unique artist ids&#39;&#39;&#39;
+    return len(self.get_artists())</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_artists"><code class="name flex">
+<span>def <span class="ident">get_artists</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for internal artist id, names</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of ids and artists</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_artists(self):
+    &#39;&#39;&#39;query server for internal artist id, names
+    Returns:
+        (dict): JSON formatted list of ids and artists&#39;&#39;&#39;
+    return self.query(&#34;&#34;, &#34;artists&#34;, 0, 9999)[&#39;artists_loop&#39;]</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_current_album"><code class="name flex">
+<span>def <span class="ident">get_current_album</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for currently playing track album</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_album(self):
+    &#39;&#39;&#39;query associated player for currently playing track album
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+    
+    album = self.query(self.player_id, &#34;album&#34;, &#34;?&#34;)
+    if len(album):
+        album = album[&#39;_album&#39;]
+    else:
+        album = &#34;&#34;
+    return album</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_current_artist"><code class="name flex">
+<span>def <span class="ident">get_current_artist</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for currently playing artist</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_artist(self):
+    &#39;&#39;&#39;query associated player for currently playing artist
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+
+    artist = self.query(self.player_id, &#34;artist&#34;, &#34;?&#34;)
+    if len(artist):
+        artist = artist[&#39;_artist&#39;]
+    else:
+        artist = &#34;&#34;
+    return artist</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_current_radio_title"><code class="name flex">
+<span>def <span class="ident">get_current_radio_title</span></span>(<span>self, radio)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_radio_title(self, radio):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;favorites&#34;,
+                      &#34;items&#34;, 0, 99)[&#39;loop_loop&#39;][radio][&#39;name&#39;]</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_current_song_title"><code class="name flex">
+<span>def <span class="ident">get_current_song_title</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for currently playing track title</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_song_title(self):
+    &#39;&#39;&#39;query associated player for currently playing track title
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+    title = self.query(self.player_id, &#34;current_title&#34;, &#34;?&#34;)
+    if len(title):
+        title = title[&#39;_current_title&#39;]
+    else:
+        title = &#34;&#34;
+    return title</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_current_title"><code class="name flex">
+<span>def <span class="ident">get_current_title</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for currently playing track title</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_title(self):
+    &#39;&#39;&#39;query associated player for currently playing track title
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+    
+    title = self.query(self.player_id, &#34;title&#34;, &#34;?&#34;)
+    if len(title):
+        title = title[&#39;_title&#39;]
+    else:
+        title = &#34;&#34;
+    return title</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_next_alarm"><code class="name flex">
+<span>def <span class="ident">get_next_alarm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_next_alarm(self):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    alarms = self.get_alarms(self.player_id)
+    alarmtime = 0
+    delta = 0
+    if alarms == {} or alarms[&#39;count&#39;] == 0:
+        return {}
+    for alarmitem in alarms[&#39;alarms_loop&#39;]:
+        if(str((datetime.datetime.today().weekday() + 1) % 7)
+           not in alarmitem[&#39;dow&#39;]):
+            continue
+        alarmtime_new = datetime.timedelta(seconds=int(alarmitem[&#39;time&#39;]))
+        now = datetime.datetime.now()
+        currenttime = datetime.timedelta(hours=now.hour,
+                                         minutes=now.minute,
+                                         seconds=now.second)
+        delta_new = alarmtime_new - currenttime
+        if delta == 0:
+            delta = delta_new
+            alarmtime = alarmtime_new
+        elif delta_new &lt; delta:
+            delta = delta_new
+            alarmtime = alarmtime_new
+    if alarmtime == 0:
+        return {}
+    else:
+        return {&#34;alarmtime&#34;: alarmtime.seconds, &#34;delta&#34;: delta.seconds}</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_now_playing"><code class="name flex">
+<span>def <span class="ident">get_now_playing</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for now playing information including:
+* album
+* artist
+* artwork_url
+* duration
+* genre
+* coverid
+* id
+* title</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_now_playing(self):
+    &#39;&#39;&#39;query associated player for now playing information including:
+    * album
+    * artist
+    * artwork_url
+    * duration
+    * genre
+    * coverid
+    * id
+    * title&#39;&#39;&#39;        
+    status_keys = [&#39;time&#39;, &#39;mode&#39;]
+    
+    status = self.query(self.player_id, &#39;status&#39;)
+    track_id = None
+    song_info = None
+    now_playing_info = {}
+    
+    if status:
+        try:
+            playing_track = self.query(self.player_id, &#39;status&#39;, 
+                                       int(status[&#39;playlist_cur_index&#39;]), 1, &#39;-&#39;)[&#39;playlist_loop&#39;][0]
+            track_id = playing_track[&#39;id&#39;]
+            song_info = self.query(&#39;&#39;, &#39;songinfo&#39;, 0, 100, &#39;track_id:&#39;+str(track_id), &#39;tags:a,c,d,e,g,l&#39;)[&#39;songinfo_loop&#39;]
+            for key in status_keys:
+                if key in status:
+                    now_playing_info[key] = status[key]
+                else:
+                    now_playing_info[key] = None
+        except (KeyError, IndexError):
+            pass
+   
+    if song_info:
+        try:
+            for each in song_info:
+                for key in each:
+                    now_playing_info[key] = each[key]
+            coverid = 0
+            if &#39;coverid&#39; in now_playing_info:
+                if now_playing_info[&#39;coverid&#39;].startswith(&#39;-&#39;):
+                    pass
+                else:
+                    coverid = now_playing_info[&#39;coverid&#39;]
+            now_playing_info[&#39;artwork_url&#39;] = f&#39;{self.server_base_url}music/{coverid}/cover.jpg&#39;
+        except (KeyError, IndexError):
+            pass
+        
+
+    return now_playing_info</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_player_count"><code class="name flex">
+<span>def <span class="ident">get_player_count</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for total number of connected players</p>
+<h2 id="returns">Returns</h2>
+<p>(int): count of unique players connected</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_player_count(self):
+    &#39;&#39;&#39;query server for total number of connected players
+    
+    Returns:
+        (int): count of unique players connected&#39;&#39;&#39;
+    return self.query(&#34;&#34;, &#34;player&#34;, &#34;count&#34;, &#34;?&#34;)[&#39;_count&#39;]    </code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_player_pref"><code class="name flex">
+<span>def <span class="ident">get_player_pref</span></span>(<span>self, pref)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_player_pref(self, pref):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;playerpref&#34;, pref, &#34;?&#34;)[&#39;_p2&#39;]</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_players"><code class="name flex">
+<span>def <span class="ident">get_players</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for connected player information</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of player information</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_players(self):
+    &#39;&#39;&#39;query server for connected player information
+    
+    Returns:
+        (dict): JSON formatted list of player information&#39;&#39;&#39;
+    players = self.get_server_status()
+    if len(players):
+        players = players[&#39;players_loop&#39;]
+    return players</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_radios_count"><code class="name flex">
+<span>def <span class="ident">get_radios_count</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for total number of radios</p>
+<h2 id="returns">Returns</h2>
+<p>(int): count of unique radios connected</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_radios_count(self):
+    &#39;&#39;&#39;query server for total number of radios
+    
+    Returns:
+        (int): count of unique radios connected&#39;&#39;&#39;
+    return self.query(&#34;&#34;, &#34;favorites&#34;, &#34;items&#34;)[&#39;count&#39;]</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_server_status"><code class="name flex">
+<span>def <span class="ident">get_server_status</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server status in JSON</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted server status</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_server_status(self):
+    &#39;&#39;&#39;query server status in JSON
+    
+    Returns:
+        (dict): JSON formatted server status&#39;&#39;&#39;
+    return self.query(&#34;&#34;, &#34;serverstatus&#34;, 0, 99)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.get_volume"><code class="name flex">
+<span>def <span class="ident">get_volume</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query associated player for volume</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_volume(self):
+    &#39;&#39;&#39;query associated player for volume
+    
+    Returns:
+        (str)&#39;&#39;&#39;
+    volume = self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, &#34;?&#34;)
+    if len(volume):
+        volume = volume[&#39;_volume&#39;]
+    else:
+        volume = 0
+    return volume</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.is_playing_remote_stream"><code class="name flex">
+<span>def <span class="ident">is_playing_remote_stream</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_playing_remote_stream(self):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;remote&#34;, &#34;?&#34;)[&#39;_remote&#39;] == 1</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.next_song"><code class="name flex">
+<span>def <span class="ident">next_song</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>fast forward one track on associated player</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def next_song(self):
+    &#39;&#39;&#39;fast forward one track on associated player
+    
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    return self.skip_songs()</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.pause"><code class="name flex">
+<span>def <span class="ident">pause</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>pause associated player</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pause(self):
+    &#39;&#39;&#39;pause associated player
+    
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;pause&#34;)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.play_album"><code class="name flex">
+<span>def <span class="ident">play_album</span></span>(<span>self, album_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>play an album on associated player</p>
+<h2 id="args">Args</h2>
+<p>album_id(int): internal album id</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {'count': int} total tracks on album</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def play_album(self, album_id):
+    &#39;&#39;&#39;play an album on associated player
+    
+    Args:
+        album_id(int): internal album id
+        
+    Returns:
+        (dict): {&#39;count&#39;: int} total tracks on album&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;playlistcontrol&#34;, &#34;cmd:load&#34;,
+                      &#34;album_id:&#34; + str(album_id))</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.play_radio"><code class="name flex">
+<span>def <span class="ident">play_radio</span></span>(<span>self, radio)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>play radio??? on associated player</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def play_radio(self, radio):
+    &#39;&#39;&#39;play radio??? on associated player&#39;&#39;&#39;
+    return self.query(self.player_id, &#34;favorites&#34;, &#34;playlist&#34;, &#34;play&#34;,
+                      &#34;item_id:&#34; + str(radio))</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.previous_song"><code class="name flex">
+<span>def <span class="ident">previous_song</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>rewind one track on associated player</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def previous_song(self):
+    &#39;&#39;&#39;rewind one track on associated player
+    
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    return self.skip_songs(-1)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.query"><code class="name flex">
+<span>def <span class="ident">query</span></span>(<span>self, player_id='', *args)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def query(self, player_id=&#34;&#34;, *args):
+        r = {}
+        params = json.dumps({&#39;id&#39;: 1, &#39;method&#39;: &#39;slim.request&#39;,
+                             &#39;params&#39;: [player_id, list(args)]})
+        try:
+            r = requests.post(self.server_query_url, params)
+        except requests.exceptions.RequestException as e:
+            logging.warning(f&#39;error making connection to server: {e}&#39;)
+        if r:
+            retval = json.loads(r.text)[&#39;result&#39;]
+        else:
+            retval = {}
+#         return json.loads(r.text)[&#39;result&#39;]
+        return retval</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.rescan"><code class="name flex">
+<span>def <span class="ident">rescan</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>rescan LMS library</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rescan(self):
+    &#39;&#39;&#39;rescan LMS library
+    
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    return self.query(&#34;&#34;, &#34;rescan&#34;)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.search"><code class="name flex">
+<span>def <span class="ident">search</span></span>(<span>self, searchstring, count=9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for searchstring (ignoring case)</p>
+<h2 id="args">Args</h2>
+<p>searchstring(str): string to search for</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of all entities containing searchstring</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search(self, searchstring, count=9999):
+    &#39;&#39;&#39;query server for searchstring (ignoring case)
+    
+    Args:
+        searchstring(str): string to search for
+    
+    Returns:
+        (dict): JSON formatted list of all entities containing searchstring
+        &#39;&#39;&#39;
+    return self.query(&#39;&#39;, &#34;search&#34;, 0, count, &#34;term:&#34; + searchstring)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.search_albums"><code class="name flex">
+<span>def <span class="ident">search_albums</span></span>(<span>self, searchstring, count=9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for searchstring in album names (ignoring case)</p>
+<h2 id="args">Args</h2>
+<p>searchstring(str): string to search tracks for</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of all album entities containing searchstring</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_albums(self, searchstring, count=9999):
+    &#39;&#39;&#39;query server for searchstring in album names (ignoring case)
+    
+    Args:
+        searchstring(str): string to search tracks for
+        
+    Returns:
+        (dict): JSON formatted list of all album entities containing searchstring&#39;&#39;&#39;        
+    result = self.search(searchstring, count)
+    if &#39;albums_loop&#39; in result:
+        response = {&#34;albums_count&#34;: result[&#39;albums_count&#39;],
+                &#34;albums_loop&#34;: result[&#39;albums_loop&#39;]}
+    else:
+        response = {&#34;albums_count&#34;: 0}
+    return response</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.search_contributors"><code class="name flex">
+<span>def <span class="ident">search_contributors</span></span>(<span>self, searchstring, count=9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for searchstring in contributors names (ignoring case)</p>
+<h2 id="args">Args</h2>
+<p>searchstring(str): string to search tracks for</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of all contributors entities containing searchstring</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_contributors(self, searchstring, count=9999):
+    &#39;&#39;&#39;query server for searchstring in contributors names (ignoring case)
+    
+    Args:
+        searchstring(str): string to search tracks for
+        
+    Returns:
+        (dict): JSON formatted list of all contributors entities containing searchstring&#39;&#39;&#39;        
+    result = self.search(searchstring, count)
+    if &#39;contributors_loop&#39; in result:
+        response = {&#34;contributors_count&#34;: result[&#39;contributors_count&#39;],
+                &#34;contributors_loop&#34;: result[&#39;contributors_loop&#39;]}
+    else:
+        response = {&#34;contributors_count&#34;: 0}
+    return response</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.search_players"><code class="name flex">
+<span>def <span class="ident">search_players</span></span>(<span>self, searchstring, count=9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for searchstring in player names (ignoring case)</p>
+<h2 id="args">Args</h2>
+<p>searchstring(str): string to search tracks for</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of all player entities containing searchstring</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_players(self, searchstring, count=9999):
+    &#39;&#39;&#39;query server for searchstring in player names (ignoring case)
+    
+    Args:
+        searchstring(str): string to search tracks for
+        
+    Returns:
+        (dict): JSON formatted list of all player entities containing searchstring&#39;&#39;&#39;        
+    players = self.get_players()
+    result = []
+    count = 0
+    for player in players:
+        for value in list(player.values()):
+            if(searchstring.lower() in str(value).lower()):
+                result.append(player)
+                count = count + 1
+    if count &gt; 0:
+        response = {&#34;players_count&#34;: count, &#34;players_loop&#34;: result}
+    else:
+        response = {&#34;players_count&#34;: count}
+    return response</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.search_tracks"><code class="name flex">
+<span>def <span class="ident">search_tracks</span></span>(<span>self, searchstring, count=9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>query server for searchstring in track names (ignoring case)</p>
+<h2 id="args">Args</h2>
+<p>searchstring(str): string to search tracks for</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): JSON formatted list of all track entities containing searchstring</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_tracks(self, searchstring, count=9999):
+    &#39;&#39;&#39;query server for searchstring in track names (ignoring case)
+    
+    Args:
+        searchstring(str): string to search tracks for
+        
+    Returns:
+        (dict): JSON formatted list of all track entities containing searchstring&#39;&#39;&#39;
+    result = self.search(searchstring, count)
+    if &#39;tracks_loop&#39; in result:
+        response = {&#34;tracks_count&#34;: result[&#39;tracks_count&#39;],
+                &#34;tracks_loop&#34;: result[&#39;tracks_loop&#39;]}
+    else:
+        response = {&#34;tracks_count&#34;: 0}
+    return response</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.set_player_pref"><code class="name flex">
+<span>def <span class="ident">set_player_pref</span></span>(<span>self, pref, value)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>???</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_player_pref(self, pref, value):
+    &#39;&#39;&#39;???&#39;&#39;&#39;
+    self.query(self.player_id, &#34;playerpref&#34;, pref, value)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.set_power"><code class="name flex">
+<span>def <span class="ident">set_power</span></span>(<span>self, power=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>send power command to connected player</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power(self, power=1):
+    &#39;&#39;&#39;send power command to connected player&#39;&#39;&#39;
+    self.query(self.player_id, &#34;power&#34;, power)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.set_power_all"><code class="name flex">
+<span>def <span class="ident">set_power_all</span></span>(<span>self, power=1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_power_all(self, power=1):
+    players = self.get_players()
+    for player in players:
+        self.set_power(player[&#39;playerid&#39;], power)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.set_server"><code class="name flex">
+<span>def <span class="ident">set_server</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>set the server details using "host" and "port"
+if no host and port is specified, queryLMS will search for the first LMS server
+on the local network segment</p>
+<h2 id="sets">Sets</h2>
+<p>server_query_url
+server_base_url
+player_id (if not already set)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def set_server(self):
+        &#39;&#39;&#39;set the server details using &#34;host&#34; and &#34;port&#34;
+        if no host and port is specified, queryLMS will search for the first LMS server
+        on the local network segment
+        
+        Sets:
+            server_query_url
+            server_base_url
+            player_id (if not already set)&#39;&#39;&#39;
+        
+        base_url = None
+        query_url = None
+
+        
+        if self.host and self.port:
+            my_host = self.host
+            my_port = self.port
+        else:
+            my_host = None
+            my_port = None
+
+            server_list = self.scan_lms(self.scan_timeout)
+            if server_list:
+                try:
+                    my_host = server_list[0][&#39;host&#39;]
+                    my_port = server_list[0][&#39;port&#39;]
+                except (KeyError, IndexError) as e:
+                    logging.warning(f&#39;server search returned no valid data: {e}&#39;)
+
+            self.host = my_host
+            self.port = my_port
+
+        if my_host and my_port:
+            base_url = constants.LMS_QUERY_BASE_URL.format(self.host, self.port)
+            query_url = constants.LMS_QUERY_ENDPOINT.format(base_url)
+                    
+#         self.lms_server = {&#39;host&#39;: my_host, &#39;port&#39;: my_port}          
+        self.server_base_url = base_url
+        self.server_query_url = query_url
+        
+        if self.player_name and not self.player_id:
+            player_id = None
+#             logging.info(f&#39;attempting to locate player_id for {player_name}&#39;)
+            for p in self.get_players():
+                if &#39;name&#39; in p and &#39;playerid&#39; in p:
+                    if p[&#39;name&#39;] == self.player_name:
+                        player_id = p[&#39;playerid&#39;]
+                        break
+            
+            self.player_id = player_id</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.set_volume"><code class="name flex">
+<span>def <span class="ident">set_volume</span></span>(<span>self, volume)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>set volume on associated player</p>
+<h2 id="args">Args</h2>
+<p>volume(int): 0-100</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_volume(self, volume):
+    &#39;&#39;&#39;set volume on associated player
+    
+    Args:
+        volume(int): 0-100
+        
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    self.query(self.player_id, &#34;mixer&#34;, &#34;volume&#34;, volume)</code></pre>
+</details>
+</dd>
+<dt id="QueryLMS.QueryLMS.skip_songs"><code class="name flex">
+<span>def <span class="ident">skip_songs</span></span>(<span>self, amount=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>skip n tracks on associated player</p>
+<h2 id="args">Args</h2>
+<p>amount(int): number of tracks to skip</p>
+<h2 id="returns">Returns</h2>
+<p>(dict): {}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def skip_songs(self, amount=1):
+    &#39;&#39;&#39;skip n tracks on associated player
+    
+    Args:
+        amount(int): number of tracks to skip
+    
+    Returns:
+        (dict): {}&#39;&#39;&#39;
+    if amount &gt; 0:
+        amount = &#34;+&#34; + str(amount)
+    else:
+        amount = str(amount)
+    return self.query(self.player_id, &#34;playlist&#34;, &#34;index&#34;, amount)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="QueryLMS.QueryLMS" href="#QueryLMS.QueryLMS">QueryLMS</a></code></h4>
+<ul class="">
+<li><code><a title="QueryLMS.QueryLMS.display" href="#QueryLMS.QueryLMS.display">display</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.display_all" href="#QueryLMS.QueryLMS.display_all">display_all</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_alarms" href="#QueryLMS.QueryLMS.get_alarms">get_alarms</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_artist_album" href="#QueryLMS.QueryLMS.get_artist_album">get_artist_album</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_artist_count" href="#QueryLMS.QueryLMS.get_artist_count">get_artist_count</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_artists" href="#QueryLMS.QueryLMS.get_artists">get_artists</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_current_album" href="#QueryLMS.QueryLMS.get_current_album">get_current_album</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_current_artist" href="#QueryLMS.QueryLMS.get_current_artist">get_current_artist</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_current_radio_title" href="#QueryLMS.QueryLMS.get_current_radio_title">get_current_radio_title</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_current_song_title" href="#QueryLMS.QueryLMS.get_current_song_title">get_current_song_title</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_current_title" href="#QueryLMS.QueryLMS.get_current_title">get_current_title</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_next_alarm" href="#QueryLMS.QueryLMS.get_next_alarm">get_next_alarm</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_now_playing" href="#QueryLMS.QueryLMS.get_now_playing">get_now_playing</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_player_count" href="#QueryLMS.QueryLMS.get_player_count">get_player_count</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_player_pref" href="#QueryLMS.QueryLMS.get_player_pref">get_player_pref</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_players" href="#QueryLMS.QueryLMS.get_players">get_players</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_radios_count" href="#QueryLMS.QueryLMS.get_radios_count">get_radios_count</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_server_status" href="#QueryLMS.QueryLMS.get_server_status">get_server_status</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.get_volume" href="#QueryLMS.QueryLMS.get_volume">get_volume</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.host" href="#QueryLMS.QueryLMS.host">host</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.is_playing_remote_stream" href="#QueryLMS.QueryLMS.is_playing_remote_stream">is_playing_remote_stream</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.next_song" href="#QueryLMS.QueryLMS.next_song">next_song</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.pause" href="#QueryLMS.QueryLMS.pause">pause</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.play_album" href="#QueryLMS.QueryLMS.play_album">play_album</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.play_radio" href="#QueryLMS.QueryLMS.play_radio">play_radio</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.player_id" href="#QueryLMS.QueryLMS.player_id">player_id</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.player_name" href="#QueryLMS.QueryLMS.player_name">player_name</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.port" href="#QueryLMS.QueryLMS.port">port</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.previous_song" href="#QueryLMS.QueryLMS.previous_song">previous_song</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.query" href="#QueryLMS.QueryLMS.query">query</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.rescan" href="#QueryLMS.QueryLMS.rescan">rescan</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.scan_lms" href="#QueryLMS.QueryLMS.scan_lms">scan_lms</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.search" href="#QueryLMS.QueryLMS.search">search</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.search_albums" href="#QueryLMS.QueryLMS.search_albums">search_albums</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.search_contributors" href="#QueryLMS.QueryLMS.search_contributors">search_contributors</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.search_players" href="#QueryLMS.QueryLMS.search_players">search_players</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.search_tracks" href="#QueryLMS.QueryLMS.search_tracks">search_tracks</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.set_player_pref" href="#QueryLMS.QueryLMS.set_player_pref">set_player_pref</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.set_power" href="#QueryLMS.QueryLMS.set_power">set_power</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.set_power_all" href="#QueryLMS.QueryLMS.set_power_all">set_power_all</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.set_server" href="#QueryLMS.QueryLMS.set_server">set_server</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.set_volume" href="#QueryLMS.QueryLMS.set_volume">set_volume</a></code></li>
+<li><code><a title="QueryLMS.QueryLMS.skip_songs" href="#QueryLMS.QueryLMS.skip_songs">skip_songs</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
