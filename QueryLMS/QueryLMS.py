@@ -11,7 +11,7 @@ import socket
 import json
 
 try:
-    from . import const
+    from . import constants
 except ImportError as e:
     import constants
 
@@ -176,7 +176,7 @@ class QueryLMS():
                     my_host = server_list[0]['host']
                     my_port = server_list[0]['port']
                 except (KeyError, IndexError) as e:
-                    logging.warning(f'server search returned no valid data: {e}')
+                    logging.warning(f'server search returned no valid data: {e}; is there an LMS on the local network?')
 
             self.host = my_host
             self.port = my_port
@@ -259,20 +259,22 @@ class QueryLMS():
     #####################################
     def query(self, player_id="", *args):
         r = {}
+        retval = {}
         params = json.dumps({'id': 1, 'method': 'slim.request',
                              'params': [player_id, list(args)]})
-        try:
-            r = requests.post(self.server_query_url, params)
-        except requests.exceptions.RequestException as e:
-            if self.handle_requests_exceptions:
-                logging.warning(f'error making connection to server: {e}')
-            else:
-                raise e
-        if r:
-            retval = json.loads(r.text)['result']
+        if self.server_query_url:
+            try:
+                r = requests.post(self.server_query_url, params)
+            except requests.exceptions.RequestException as e:
+                if self.handle_requests_exceptions:
+                    logging.warning(f'error making connection to server: {e}')
+                else:
+                    raise e
+            if r:
+                retval = json.loads(r.text)['result']
         else:
-            retval = {}
-#         return json.loads(r.text)['result']
+            logging.warning('"server_query_url" is not set')
+
         return retval
 
     # Server commands
@@ -759,6 +761,13 @@ class QueryLMS():
         players = self.get_players()
         for player in players:
             self.display(player['playerid'], line1, line2, duration)
+
+
+
+
+
+
+
 
 
 
