@@ -1,5 +1,5 @@
 name="QueryLMS" # Replace with your own username
-version="0.1.0"
+version="0.1.1"
 author="Aaron Ciuffo"
 author_email="aaron.ciuffo@gmail.com"
 description="QueryLMS creates an simple interface for making queries and issuing commands to Logitech Media Server and associated players"

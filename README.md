@@ -6,7 +6,10 @@ QueryLMS is a rewrite of [LMSQuery](https://github.com/roberteinhaus/lmsquery) a
 Usage:
 ```
     import QueryLMS
+    # create the object and try to discover LMS on the local network
+    # try to associate with "My Player"
     my_player = QueryLMS(player_name='My Player')
+    # get now playing tracks
     my_player.get_now_playing()
     >>> {'time': 0,
          'mode': 'stop',
@@ -19,9 +22,17 @@ Usage:
          'genre': 'No Genre',
          'album': 'Father of the Bride',
          'artwork_url': 'http://192.168.178.9:9000/music/c9d646ff/cover.jpg'}
+  
+  # create the object with a defined hostname and port
+  # try to associate with player "Living Room"
+  living_room = QueryLMS(host="media-server.local", port=9001, player_name="Living Room")
+  
 ```
 
 ## API
+All player related calls will raise ValueError if player_id is not set.
+
+
 ```
 class QueryLMS(builtins.object)
    QueryLMS(host=None, port=None, player_name=None, player_id=None, scan_timeout=5)

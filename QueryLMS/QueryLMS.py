@@ -22,13 +22,6 @@ import logging
 
 
 
-# building documentation https://stackoverflow.com/questions/36237477/python-docstrings-to-github-readme-md
-
-
-
-
-
-
 logger = logging.getLogger(__name__)
 
 
@@ -37,15 +30,20 @@ logger = logging.getLogger(__name__)
 
 
 class QueryLMS():
-    '''Class to handle queries for a LMS player
+    '''Class to handle queries for an LMS player
     
-    Each Query LMS object is associated with a single player
+    Each Query LMS object is associated with a single player_id
     
-    If no host and port number are specified, the object will attempt to locate
+    If no host and port number are specified, the QueryLMS object will attempt to locate
     an active LMS Server on the network. If a player_name is specified, the Query
     object will attempt to find the player_id associated with that name.
     
-    All queries are run against the server or a single server
+    All queries are run against the first located (or specified) 
+    server or a single player.
+    
+    By default any http requests exceptions encoutered when communicating
+    with the server are raised and should be handled by your program. 
+    Supress and log exceptions with handle_reqests_exceptions=True
     
     Attributes:
         host(str): LMS Server hostname or ip address
@@ -55,14 +53,25 @@ class QueryLMS():
         scan_timeout(int): seconds to search local network for an LMS server
         server_query_url(str): url to use when querying host status
         server_base_url(str): base url of server: http://host:port/
+        handle_requests_exceptions(bool): True: quietly handle exceptions; False: raise exceptions
         
     
         '''
-    def __init__(self, host=None, port=None, player_name=None, player_id=None, scan_timeout=5):
+    def __init__(self, host=None, port=None, 
+                 player_name=None, 
+                 player_id=None, 
+                 scan_timeout=5,
+                 handle_requests_exceptions=False):
         '''inits QueryLMS Class with host, port, player_id, player_name and scan_timeout
         
-        Attempts to set 
+        Args:
+            host(str): LMS host name or ip address 
+            port(int): LMS port number
+            player_name(str): name of player to associate with
+            player_id(str): player_id in hex 
+            scan_timeout(int): seconds to search for LMS host
         '''
+        self.handle_requests_exceptions=handle_requests_exceptions
         self.host = host
         self.port = port        
         self.player_id = player_id
@@ -118,10 +127,32 @@ class QueryLMS():
         self._player_id = player_id
             
 
+    def _check_attribute(self, attribute, check_value=True, invalid_values=[], exception=AttributeError):
+        if hasattr(self, attribute):
+            my_attribute = getattr(self, attribute)
+            if check_value:
+                for value in invalid_values:
+                    if my_attribute == value:
+                        raise ValueError(f'invalid value "{value}" for "{attribute}"')
+            else:
+                pass
+        else:
+            raise exception()
+        
     def set_server(self):
         '''set the server details using "host" and "port"
-        if no host and port is specified, queryLMS will search for the first LMS server
-        on the local network segment
+        
+        If no host and port is specified, queryLMS will search for the 
+        first LMS server on the local network segment.
+        
+        If the server IP/name or port change it is necessary
+        to run set_server() again to trigger updates of the query urls
+        
+        QueryLMS will not detect dynamic changes of player name.
+        
+        Use the static method scan_lms() to find host information
+        
+        Use the get_players() method to list player names/ids associated with a LMS
         
         Sets:
             server_query_url
@@ -233,7 +264,10 @@ class QueryLMS():
         try:
             r = requests.post(self.server_query_url, params)
         except requests.exceptions.RequestException as e:
-            logging.warning(f'error making connection to server: {e}')
+            if self.handle_requests_exceptions:
+                logging.warning(f'error making connection to server: {e}')
+            else:
+                raise e
         if r:
             retval = json.loads(r.text)['result']
         else:
@@ -394,11 +428,18 @@ class QueryLMS():
             
         Returns:
             (dict): {'count': int} total tracks on album'''
+        self._check_attribute(attribute='player_id', 
+                      check_value=True, 
+                      invalid_values=[None, ''])
+
         return self.query(self.player_id, "playlistcontrol", "cmd:load",
                           "album_id:" + str(album_id))
 
     def play_radio(self, radio):
         '''play radio??? on associated player'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
         return self.query(self.player_id, "favorites", "playlist", "play",
                           "item_id:" + str(radio))
 
@@ -407,6 +448,10 @@ class QueryLMS():
         
         Returns:
             (dict): {}'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         return self.query(self.player_id, "pause")
 
     def skip_songs(self, amount=1):
@@ -417,6 +462,10 @@ class QueryLMS():
         
         Returns:
             (dict): {}'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+
         if amount > 0:
             amount = "+" + str(amount)
         else:
@@ -428,6 +477,10 @@ class QueryLMS():
         
         Returns:
             (dict): {}'''
+        self._check_attribute(attribute='player_id', 
+                          check_value=True, 
+                          invalid_values=[None, ''])
+
         return self.skip_songs(-1)
 
     def next_song(self):
@@ -435,6 +488,10 @@ class QueryLMS():
         
         Returns:
             (dict): {}'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         return self.skip_songs()
     
     def get_volume(self):
@@ -442,11 +499,15 @@ class QueryLMS():
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         volume = self.query(self.player_id, "mixer", "volume", "?")
         if len(volume):
             volume = volume['_volume']
         else:
-            volume = 0
+            volume = 0            
         return volume
 
     def set_volume(self, volume):
@@ -457,13 +518,22 @@ class QueryLMS():
             
         Returns:
             (dict): {}'''
-        self.query(self.player_id, "mixer", "volume", volume)
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
+        return self.query(self.player_id, "mixer", "volume", volume)
+        
 
     def get_current_song_title(self):
         '''query associated player for currently playing track title
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         title = self.query(self.player_id, "current_title", "?")
         if len(title):
             title = title['_current_title']
@@ -476,6 +546,9 @@ class QueryLMS():
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
 
         artist = self.query(self.player_id, "artist", "?")
         if len(artist):
@@ -489,6 +562,9 @@ class QueryLMS():
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
         
         album = self.query(self.player_id, "album", "?")
         if len(album):
@@ -502,6 +578,9 @@ class QueryLMS():
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
         
         title = self.query(self.player_id, "title", "?")
         if len(title):
@@ -512,11 +591,19 @@ class QueryLMS():
 
     def get_current_radio_title(self, radio):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         return self.query(self.player_id, "favorites",
                           "items", 0, 99)['loop_loop'][radio]['name']
 
     def is_playing_remote_stream(self):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         return self.query(self.player_id, "remote", "?")['_remote'] == 1
 
     def get_artist_album(self, artist_id):
@@ -524,12 +611,19 @@ class QueryLMS():
         
         Returns:
             (str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
         
         return self.query(self.player_id, "albums", 0, 99, "tags:al",
                           "artist_id:" + str(artist_id))['albums_loop']
 
     def get_alarms(self, enabled=True):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         if enabled:
             alarmsEnabled = self.get_player_pref(self.player_id, "alarmsEnabled")
             if alarmsEnabled == "0":
@@ -542,6 +636,10 @@ class QueryLMS():
 
     def get_next_alarm(self):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         alarms = self.get_alarms(self.player_id)
         alarmtime = 0
         delta = 0
@@ -577,7 +675,10 @@ class QueryLMS():
         * genre
         * coverid
         * id
-        * title'''        
+        * title'''  
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
         status_keys = ['time', 'mode']
         
         status = self.query(self.player_id, 'status')
@@ -619,10 +720,18 @@ class QueryLMS():
     
     def get_player_pref(self, pref):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         return self.query(self.player_id, "playerpref", pref, "?")['_p2']
 
     def set_player_pref(self, pref, value):
         '''???'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         self.query(self.player_id, "playerpref", pref, value)
 
     def display(self, line1, line2, duration=5):
@@ -631,6 +740,10 @@ class QueryLMS():
         Args:
             line1(str)
             line1(str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
+        
         self.query(self.player_id, "display", line1, line2, duration)
 
     def display_all(self, line1, line2, duration=5):
@@ -639,6 +752,9 @@ class QueryLMS():
         Args:
             line1(str)
             line1(str)'''
+        self._check_attribute(attribute='player_id', 
+                              check_value=True, 
+                              invalid_values=[None, ''])
 
         players = self.get_players()
         for player in players:
