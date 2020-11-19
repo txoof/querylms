@@ -1,5 +1,6 @@
+from QueryLMS import constants as q_constants
 name="QueryLMS" # Replace with your own username
-version="0.1.1"
+version=q_constants.QUERYLMS_VERSION
 author="Aaron Ciuffo"
 author_email="aaron.ciuffo@gmail.com"
 description="QueryLMS creates an simple interface for making queries and issuing commands to Logitech Media Server and associated players"
