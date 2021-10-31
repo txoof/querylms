@@ -1,4 +1,4 @@
-# QueryLMS
+# QueryLMS Python Library
 QueryLMS manages queries to a Logitech Media Server and associates with a single player. A QueryLMS object can be used to query server or player status information and control an LMS player.
 
 QueryLMS is a rewrite of [LMSQuery](https://github.com/roberteinhaus/lmsquery) and reuses a significant portion of the LMSQuery code.
