@@ -839,10 +839,3 @@ class QueryLMS():
 
 
 
-
-
-
-
-help(QueryLMS)
-
-
