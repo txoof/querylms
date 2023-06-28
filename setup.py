@@ -1,25 +1,30 @@
 import setuptools
 
-# import most of the setup vars from here
-from constants import *
+exec(open('QueryLMS/constants.py').read())
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name=name,
-    version=version,
-    author=author,
-    author_email=author_email,
-    description=description,
+    name="QueryLMS",
+    version=QUERYLMS_VERSION,
+    author="Aaron Ciuffo",
+    author_email="aaron.ciuffo@gmail.com",
+    description="Simple interface for making queries and issuing commands to Logitech Media Server and associated players",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url=url,
+    url="https://github.com/txoof/querylms",
     packages=setuptools.find_packages(),
-    classifiers=classifiers,
-    keywords=keywords,
-    install_requires=install_requires,
-    project_urls=project_urls,
-    python_requires=python_requires,
+    classifiers=[
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Programming Language :: Python :: 3.7",
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+        "Operating System :: OS Independent"],
+    keywords="graphics e-paper display waveshare",
+    install_requires=["requests"],
+    project_urls={"Source": "https://github.com/txoof/querylms"},
+    python_requires=">=3.7",
     package_data={"documentation": ["./docs"]},
 )
