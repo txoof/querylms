@@ -6,44 +6,49 @@ on:
 name: release
 
 jobs:
-  pypi:
-    name: upload release to PyPI
+  build:
+    name: Build distribution
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
+
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - name: Install pypa/build
+      run: >-
+        python3 -m
+        pip install
+        build
+        --user
+    - name: Build a binary wheel and a source tarball
+      run: python3 setup.py sdist bdist_wheel
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-package-distributions
+        path: dist/
+      
+  publish-to-pypi:
+    name: >-
+      Publish Python 🐍 distribution 📦 to PyPI
+    if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/<package-name>  # Replace <package-name> with your PyPI project name
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v3
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
 
-      - name: deps
-        run: python -m pip install -U build setuptools wheel twine
-
-      - name: build
-        run: python setup.py sdist bdist_wheel
-
-      - name: mint API token
-        id: mint-token
-        run: |
-          # retrieve the ambient OIDC token
-          resp=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=pypi")
-          oidc_token=$(jq '.value' <<< "${resp}")
-
-          # exchange the OIDC token for an API token
-          resp=$(curl -X POST https://pypi.org/_/oidc/github/mint-token -d "{\"token\": \"${oidc_token}\"}")
-          api_token=$(jq '.token' <<< "${resp}")
-
-          # mask the newly minted API token, so that we don't accidentally leak it
-          echo "::add-mask::${api_token}"
-
-          # see the next step in the workflow for an example of using this step output
-          echo "api-token=${api_token}" >> "${GITHUB_OUTPUT}"
-
-      - name: publish
-        # gh-action-pypi-publish uses TWINE_PASSWORD automatically
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ steps.mint-token.outputs.api-token }}
