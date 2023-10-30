@@ -505,6 +505,10 @@ class QueryLMS():
         return self.query(self.player_id, "favorites", "playlist", "play",
                           "item_id:" + str(radio))
 
+    def play_stream(self, url):
+        '''play stream url on associated player'''
+        return self.query(self.player_id, "playlist", "play", str(url))
+
     def pause(self):
         '''pause associated player
         

@@ -227,6 +227,9 @@ class QueryLMS(builtins.object)
   
   play_radio(self, radio)
       play radio??? on associated player
+
+  play_stream(self, url)
+      play compatible stream such as Internet Radio or sound file on associated player
   
   previous_song(self)
       rewind one track on associated player
