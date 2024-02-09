@@ -1,11 +1,21 @@
-#!/usr/bin/env python3
-# coding: utf-8
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: light
+#       format_version: '1.5'
+#       jupytext_version: 1.16.0rc0
+#   kernelspec:
+#     display_name: venv_querylms-911aab7b55
+#     language: python
+#     name: venv_querylms-911aab7b55
+# ---
 
+# %load_ext autoreload
+# %autoreload 2
 
-
-
-
-
+# +
 import requests
 import socket
 import json
@@ -16,18 +26,9 @@ except ImportError as e:
     import constants
 
 import logging
-
-
-
-
-
+# -
 
 logger = logging.getLogger(__name__)
-
-
-
-
-
 
 NOW_PLAYING_QUERY = {
     'remote': ['remote', '?'],
@@ -86,10 +87,7 @@ NOW_PLAYING_QUERY = {
     'mixer volume': []}
 
 
-
-
-
-
+# + code_folding=[57, 62, 66, 71, 75, 94, 106, 115, 167, 246, 253, 256, 260, 266, 273, 280, 287, 302, 313, 348, 361, 364, 383, 387, 543]
 class QueryLMS():
     '''Class to handle queries for an LMS player
     
@@ -243,6 +241,8 @@ class QueryLMS():
                     my_host = server_list[0]['host']
                     my_port = server_list[0]['port']
                 except (KeyError, IndexError) as e:
+                    my_host = None
+                    my_port = None
                     logging.warning(f'server search returned no valid data: {e}; is there an LMS on the local network?')
 
             self.host = my_host
@@ -389,9 +389,10 @@ class QueryLMS():
         Returns:
             (dict): JSON formatted list of player information'''
         players = self.get_server_status()
-        if len(players):
-            players = players['players_loop']
-        return players
+        # if len(players):
+        #     players = players['players_loop']
+            
+        return players.get('players_loop', [])
     
     def search(self, searchstring, count=9999):
         '''query server for searchstring (ignoring case)
@@ -504,10 +505,6 @@ class QueryLMS():
         '''play radio??? on associated player'''
         return self.query(self.player_id, "favorites", "playlist", "play",
                           "item_id:" + str(radio))
-
-    def play_stream(self, url):
-        '''play stream url on associated player'''
-        return self.query(self.player_id, "playlist", "play", str(url))
 
     def pause(self):
         '''pause associated player
@@ -839,7 +836,3 @@ class QueryLMS():
         players = self.get_players()
         for player in players:
             self.display(player['playerid'], line1, line2, duration)
-
-
-
-
