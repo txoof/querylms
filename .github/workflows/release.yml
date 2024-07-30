@@ -18,9 +18,10 @@ jobs:
         python-version: "3.x"
     - name: Install pypa/build
       run: >-
-       python -m 
+       python3 -m 
        pip install 
-       build --user 
+       build 
+       --user 
        # --upgrade pip
        # pip install setuptools wheel twine
     - name: Build a binary wheel and source tarball
