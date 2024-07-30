@@ -5,7 +5,7 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.16.0rc0
+#       jupytext_version: 1.16.1
 #   kernelspec:
 #     display_name: venv_querylms-911aab7b55
 #     language: python
@@ -733,7 +733,15 @@ class QueryLMS():
         
         Returns:
             dict'''
-        status = self.query(self.player_id, 'status', '-')
+
+        now_playing = {}
+        
+        try:
+            status = self.query(self.player_id, 'status', '-')
+        except Exception as e:
+            logging.warning(f'Failed to query player status and get now playing info with error: {e}')
+            return now_playing
+
         playlist = status.get('playlist_loop', [])
         
         try:
@@ -748,7 +756,7 @@ class QueryLMS():
         
         info_list = track_info.get('songinfo_loop', [])
         
-        now_playing = {}
+        
         for i in info_list:
             for k, v in i.items():
                 now_playing[k] = v
@@ -767,8 +775,16 @@ class QueryLMS():
         now_playing = self._add_keys(now_playing)
         # fill in null values for remaining keys
         now_playing = self._add_keys(now_playing, True)
-        
-        if now_playing.get('remote'):
+
+
+        try:
+            remote_status = int(now_playing.get('remote', 0))
+        except Exception as e:
+            logging.warning(f'unexpected data found in now_playing["remote"]: {e}')
+            remote_status = 0
+            
+        if remote_status:
+            logging.debug(f'now_playing data: {now_playing.get("remote")}')
             now_playing['title'] = now_playing.get('remoteMeta', now_playing.get('title', '')).get('title', '')
         
         # ensure there is always an album_id value
@@ -836,3 +852,27 @@ class QueryLMS():
         players = self.get_players()
         for player in players:
             self.display(player['playerid'], line1, line2, duration)
+
+# +
+# logger.root.setLevel('DEBUG')
+
+# my_lms = QueryLMS(player_name='devel-bw64', handle_requests_exceptions=True)
+
+# s = my_lms.query(my_lms.player_id, 'status', '-')
+# playlist = s.get('playlist_loop')
+# play_trk = playlist[0]
+# trk_id = play_trk.get('id', 0)
+# trk_info = my_lms.query(my_lms.player_id, 'songinfo', '-', 100, f'track_id:{trk_id}')
+# info_list = trk_info.get('songinfo_loop')
+
+# now_playing = {}
+# for i in info_list:
+#     for k, v in i.items():
+#         now_playing[k] = v
+
+# now_playing
+
+# my_lms.get_now_playing()
+# -
+
+
